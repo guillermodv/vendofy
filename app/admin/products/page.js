@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import Navbar from '../../components/Navbar';
 import { products as initialProducts } from '../../data/products';
 
 export default function AdminProductsPage() {
@@ -38,6 +39,7 @@ export default function AdminProductsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Navbar />
       <h1 className="text-3xl font-bold mb-6">Administrar Productos</h1>
       
       <div className="flex justify-between items-center mb-4">
