@@ -1,0 +1,54 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f0f2f5;
+  color: #1c1e21;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn-primary {
+  @apply bg-pepsi-blue text-pepsi-white font-bold py-2 px-4 rounded;
+}
+
+.btn-primary:hover {
+  @apply bg-blue-900;
+}
+
+.text-pepsi-blue {
+  color: #004b93;
+}
+
+.bg-pepsi-blue {
+  background-color: #004b93;
+}
+
+.text-pepsi-white {
+  color: #ffffff;
+}
+
+.border-pepsi-blue {
+  border-color: #004b93;
+}
+
+.ring-pepsi-blue {
+  --tw-ring-color: #004b93;
+}
+
+.hover\:bg-blue-900:hover {
+    background-color: #003a75;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+    outline: none;
+    --tw-ring-color: #004b93;
+    box-shadow: 0 0 0 2px var(--tw-ring-color);
+}
+
