@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
+import './page.css';
 
 export default function SalesPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,22 +14,28 @@ export default function SalesPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="sales-page">
       <Navbar />
-      <main className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center text-pepsi-blue mb-6">
-          Catálogo de Productos
-        </h1>
-        <div className="mb-8 max-w-md mx-auto">
-          <input
-            type="text"
-            placeholder="Buscar productos..."
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pepsi-blue"
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
-          />
+      <main className="container">
+        <div className="hero">
+          <h1 className="hero-title">Bienvenido a Vendofy</h1>
+          <p className="hero-subtitle">Tu tienda online de confianza</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="search-container">
+          <div className="search-input-container">
+            <span className="search-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </span>
+            <input
+              type="text"
+              placeholder="Buscar productos..."
+              className="search-input"
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="product-grid">
           {filteredProducts.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -1,11 +1,10 @@
-
 'use client';
 
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useRouter } from 'next/navigation';
-import Navbar from '../components/Navbar';
-import Link from 'next/link';
+import './page.css';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
@@ -27,18 +26,18 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-lg shadow-md border border-gray-200">
-          <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-pepsi-blue">
+    <div className="register-page">
+      <div className="container">
+        <div className="register-card">
+          <div className="header">
+            <h2 className="title">
               Crea tu cuenta
             </h2>
+            <p className="subtitle">y únete a la comunidad</p>
           </div>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            {error && <p className="text-pepsi-red text-center mb-4">{error}</p>}
-            <div className="space-y-4">
+          <form className="register-form" onSubmit={handleSubmit}>
+            {error && <p className="error-message">{error}</p>}
+            <div className="input-group">
               <div>
                 <label htmlFor="name" className="sr-only">Nombre</label>
                 <input
@@ -46,7 +45,7 @@ export default function RegisterPage() {
                   name="name"
                   type="text"
                   required
-                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-pepsi-blue focus:border-pepsi-blue focus:z-10 sm:text-sm"
+                  className="input input-name"
                   placeholder="Nombre"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -60,7 +59,7 @@ export default function RegisterPage() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-pepsi-blue focus:border-pepsi-blue focus:z-10 sm:text-sm"
+                  className="input"
                   placeholder="Correo electrónico"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -74,7 +73,7 @@ export default function RegisterPage() {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-pepsi-blue focus:border-pepsi-blue focus:z-10 sm:text-sm"
+                  className="input input-password"
                   placeholder="Contraseña"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -85,14 +84,14 @@ export default function RegisterPage() {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pepsi-blue hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pepsi-blue"
+                className="submit-btn"
               >
                 Registrarse
               </button>
             </div>
           </form>
-          <div className="text-sm text-center">
-            <Link href="/login" className="font-medium text-pepsi-blue hover:text-blue-700">
+          <div className="login-link-container">
+            <Link href="/login" className="login-link">
               ¿Ya tienes una cuenta? Inicia sesión
             </Link>
           </div>

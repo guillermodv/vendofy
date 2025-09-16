@@ -1,0 +1,209 @@
+
+.admin-products-page {
+  min-height: 100vh;
+  background-color: #f7fafc;
+}
+
+.admin-products-page .container {
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.admin-products-page .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.admin-products-page .title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #4a90e2;
+}
+
+.admin-products-page .add-product-btn {
+  background-color: #4a90e2;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.admin-products-page .add-product-btn:hover {
+  background-color: #357abd;
+}
+
+.admin-products-page .search-input-container {
+  margin-bottom: 2rem;
+  max-width: 28rem;
+}
+
+.admin-products-page .search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.admin-products-page .search-input:focus {
+  outline: none;
+  --tw-ring-color: #4a90e2;
+  box-shadow: 0 0 0 2px var(--tw-ring-color);
+}
+
+.admin-products-page .modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(75, 85, 99, 0.75);
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  z-index: 50;
+}
+
+.admin-products-page .modal-content {
+  position: relative;
+  top: 25%;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  max-width: 32rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 0.75rem;
+  background-color: #fff;
+}
+
+.admin-products-page .modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4a90e2;
+  margin-bottom: 1.5rem;
+}
+
+.admin-products-page .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.admin-products-page .modal-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+}
+
+.admin-products-page .modal-input:focus {
+  outline: none;
+  --tw-ring-color: #4a90e2;
+  box-shadow: 0 0 0 2px var(--tw-ring-color);
+}
+
+.admin-products-page .modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.admin-products-page .cancel-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #e5e7eb;
+  color: #1f2937;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.admin-products-page .cancel-btn:hover {
+  background-color: #d1d5db;
+}
+
+.admin-products-page .confirm-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #4a90e2;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.admin-products-page .confirm-btn:hover {
+  background-color: #357abd;
+}
+
+.admin-products-page .table-container {
+  background-color: #fff;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.admin-products-page .product-table {
+  min-width: 100%;
+  border-collapse: collapse;
+  divide-y: 1px solid #e5e7eb;
+}
+
+.admin-products-page .product-table thead {
+  background-color: #f9fafb;
+}
+
+.admin-products-page .product-table th {
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.admin-products-page .product-table tbody {
+  background-color: #fff;
+  divide-y: 1px solid #e5e7eb;
+}
+
+.admin-products-page .product-table td {
+  padding: 1rem 1.5rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+}
+
+.admin-products-page .product-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+.admin-products-page .product-price {
+  color: #6b7280;
+}
+
+.admin-products-page .actions-cell {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-center;
+}
+
+.admin-products-page .edit-btn {
+  color: #4a90e2;
+}
+
+.admin-products-page .edit-btn:hover {
+  color: #357abd;
+}
+
+.admin-products-page .delete-btn {
+  color: #ef4444;
+}
+
+.admin-products-page .delete-btn:hover {
+  color: #dc2626;
+}

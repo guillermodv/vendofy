@@ -1,9 +1,9 @@
-
 'use client';
 
 import Link from 'next/link';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
+import './Navbar.css';
 
 export default function Navbar() {
   const { currentUser, logout } = useAuth();
@@ -12,39 +12,42 @@ export default function Navbar() {
   const totalItemsInCart = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <nav className="bg-pepsi-blue text-pepsi-white p-4 shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link href="/sales" className="text-2xl font-bold text-pepsi-white hover:text-gray-200">
+    <nav className="navbar">
+      <div className="containerNavbar">
+        <Link href="/sales" className="brand">
           Vendofy
         </Link>
-        <div className="flex items-center space-x-6">
-          <Link href="/admin/products" className="text-lg text-pepsi-white hover:text-gray-200">
+        <div className="nav-links">
+          <Link href="/admin/products" className="nav-link">
             Admin
+          </Link>
+          <Link href="/balance" className="nav-link">
+            Balance
           </Link>
           {currentUser ? (
             <>
-              <span className="text-lg">Hola, {currentUser.name}</span>
-              <Link href="/cart" className="relative text-lg text-pepsi-white hover:text-gray-200">
-                Carrito
+              <span className="user-info">Hola, {currentUser.name}</span>
+              <Link href="/cart" className="cart-link">
+                <svg className="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                 {totalItemsInCart > 0 && (
-                  <span className="absolute -top-2 -right-4 bg-pepsi-red text-pepsi-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="cart-badge">
                     {totalItemsInCart}
                   </span>
                 )}
               </Link>
               <button
                 onClick={logout}
-                className="bg-pepsi-red hover:bg-red-700 text-pepsi-white font-bold py-2 px-4 rounded transition duration-300"
+                className="logout-btn"
               >
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link href="/login" className="text-lg text-pepsi-white hover:text-gray-200">
+              <Link href="/login" className="login-link">
                 Login
               </Link>
-              <Link href="/register" className="text-lg text-pepsi-white hover:text-gray-200">
+              <Link href="/register" className="register-btn">
                 Registro
               </Link>
             </>

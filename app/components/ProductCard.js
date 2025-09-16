@@ -1,23 +1,33 @@
-
 'use client';
 
 import { useCart } from '../context/CartContext';
+import './ProductCard.css';
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-      <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-      <div className="p-4">
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">{product.name}</h3>
-        <p className="text-2xl font-bold text-gray-900 mb-4">${product.price}</p>
-        <button
-          onClick={() => addToCart(product)}
-          className="w-full bg-pepsi-blue hover:bg-blue-900 text-pepsi-white font-bold py-2 px-4 rounded transition duration-300"
-        >
-          Añadir al carrito
-        </button>
+    <div className="product-card">
+      <div className="image-container">
+        <img src={product.image} alt={product.name} className="product-image" />
+        <div className="price-tag">
+          ${product.price}
+        </div>
+      </div>
+      <div className="product-info">
+        <h3 className="product-name">{product.name}</h3>
+        <p className="product-description">{product.description}</p>
+        <div className="actions">
+          <button
+            onClick={() => addToCart(product)}
+            className="add-to-cart-btn"
+          >
+            Añadir al carrito
+          </button>
+          <button className="details-btn">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+          </button>
+        </div>
       </div>
     </div>
   );
