@@ -6,6 +6,9 @@ import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
 import './page.css';
 
+const welcomeMessage = "Bienvenido a Vendofy";
+const subtitleMessage = "sistema de ventas simple y eficiente";
+
 export default function SalesPage() {
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -18,8 +21,8 @@ export default function SalesPage() {
       <Navbar />
       <main className="container">
         <div className="hero">
-          <h1 className="hero-title">Bienvenido a Vendofy</h1>
-          <p className="hero-subtitle">Tu tienda online de confianza</p>
+          <h1 className="hero-title">{welcomeMessage}</h1>
+          <p className="hero-subtitle">{subtitleMessage}</p>
         </div>
         <div className="search-container">
           <div className="search-input-container">
