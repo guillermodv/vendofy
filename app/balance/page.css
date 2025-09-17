@@ -1,97 +1,136 @@
-
+/* === General Layout === */
 .balance-page {
   min-height: 100vh;
-  background-color: #f7fafc;
+  background: #f8fafc; /* gris suave */
+  font-family: 'Inter', sans-serif;
+  color: #1e293b; /* gris oscuro elegante */
+  padding-bottom: 1rem;
 }
 
-.balance-page .container {
+.container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
 }
 
-.balance-page .title {
-  font-size: 2.25rem;
-  font-weight: 800;
-  text-align: center;
-  color: #4a90e2;
-  margin-bottom: 2.5rem;
-}
-
-.balance-page .balance-card {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+/* === Títulos === */
+.title {
+  font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 2rem;
+  text-align: center;
+  color: #0f172a;
 }
 
-.balance-page .balance-title {
-  font-size: 1.5rem;
+/* === Card base === */
+.balance-card,
+.chart-card,
+.transactions-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.balance-card:hover,
+.chart-card:hover,
+.transactions-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* === Balance === */
+.balance-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #334155;
+}
+
+.balance-amount {
+  font-size: 2rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #16a34a; /* verde balance positivo */
+}
+
+/* === Chart === */
+.chart-title {
+  font-size: 1.25rem;
+  font-weight: 600;
   margin-bottom: 1rem;
+  color: #334155;
 }
 
-.balance-page .balance-amount {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #4a90e2;
-}
-
-.balance-page .transactions-card {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-.balance-page .transactions-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #2d3748;
+/* === Transacciones === */
+.transactions-title {
+  font-size: 1.25rem;
+  font-weight: 600;
   margin-bottom: 1rem;
+  color: #334155;
 }
 
-.balance-page .transactions-list-container {
-  flow-root: "";
+.transactions-list-container {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
 }
 
-.balance-page .transactions-list {
-  margin-top: -1.5rem;
-  margin-bottom: -1.5rem;
+/* Scroll suave */
+.transactions-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+.transactions-list-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+.transactions-list-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.transactions-list {
   list-style: none;
-  padding-left: 0;
-  border-top: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
+  margin: 0;
+  padding: 0;
 }
 
-.balance-page .transaction-item {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+.transaction-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  transition: background 0.2s ease;
 }
 
-.balance-page .transaction-item:last-child {
-  border-bottom: none;
+.transaction-item:hover {
+  background: #f1f5f9;
 }
 
-.balance-page .transaction-description {
-  font-size: 1.125rem;
-  color: #2d3748;
+.transaction-description {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  color: #1e293b;
 }
 
-.balance-page .transaction-amount {
-  font-size: 1.125rem;
-  font-weight: 700;
+.transaction-date {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.25rem;
 }
 
-.balance-page .income {
-  color: #10b981;
+.transaction-amount {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.balance-page .expense {
-  color: #ef4444;
+.transaction-amount.income {
+  color: #16a34a; /* verde ingresos */
+}
+
+.transaction-amount.expense {
+  color: #dc2626; /* rojo gastos */
 }

@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import './page.css';
 
-export default function CartPage() {
+export default function CartPage({showHeader = true}) {
   const { currentUser } = useAuth();
   const { cartItems, removeFromCart, clearCart } = useCart();
 
@@ -19,11 +19,11 @@ export default function CartPage() {
 
   return (
     <div className="cart-page">
-      <Navbar />
-      <div className="container">
-        <h1 className="title">
+      {showHeader && <Navbar />}
+      <div className="cart-container">
+        {showHeader && <><h1 className="title">
           Tu Carrito de Compras
-        </h1>
+        </h1></>}
         {!currentUser ? (
           <div className="login-prompt-card">
             <p className="login-prompt-text">Por favor, <Link href="/login" className="login-link">inicia sesión</Link> para ver tu carrito.</p>

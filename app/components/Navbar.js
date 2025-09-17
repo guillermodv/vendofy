@@ -21,6 +21,9 @@ export default function Navbar() {
           <Link href="/admin/products" className="nav-link">
             Admin
           </Link>
+          <Link href="/" className="nav-link">
+            Venta
+          </Link>
           <Link href="/balance" className="nav-link">
             Balance
           </Link>
