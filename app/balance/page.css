@@ -1,136 +1,228 @@
-/* === General Layout === */
+/* =================================
+   Global Styles & Variables
+   ================================= */
+:root {
+  --primary-color: #4a90e2;
+  --income-color: #22c55e;
+  --expense-color: #ef4444;
+  --profit-color: #8884d8;
+  --light-gray-color: #f8fafc;
+  --medium-gray-color: #e5e7eb;
+  --dark-gray-color: #6b7280;
+  --text-color: #1f2937;
+  --white-color: #fff;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --border-radius: 0.75rem;
+}
+
+/* =================================
+   Page Layout
+   ================================= */
 .balance-page {
-  min-height: 100vh;
-  background: #f8fafc; /* gris suave */
-  font-family: 'Inter', sans-serif;
-  color: #1e293b; /* gris oscuro elegante */
-  padding-bottom: 1rem;
+  background-color: var(--light-gray-color);
+  color: var(--text-color);
+  padding: 0 2rem 2rem 2rem;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* === Títulos === */
-.title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  text-align: center;
-  color: #0f172a;
-}
-
-/* === Card base === */
-.balance-card,
-.chart-card,
-.transactions-card {
-  background: #ffffff;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.balance-card:hover,
-.chart-card:hover,
-.transactions-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-}
-
-/* === Balance === */
-.balance-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #334155;
-}
-
-.balance-amount {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #16a34a; /* verde balance positivo */
-}
-
-/* === Chart === */
-.chart-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #334155;
-}
-
-/* === Transacciones === */
-.transactions-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #334155;
-}
-
-.transactions-list-container {
-  max-height: 400px;
-  overflow-y: auto;
-  padding-right: 0.5rem;
-}
-
-/* Scroll suave */
-.transactions-list-container::-webkit-scrollbar {
-  width: 6px;
-}
-.transactions-list-container::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 10px;
-}
-.transactions-list-container::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-.transactions-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.transaction-item {
+.balance-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f9fafb;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-  transition: background 0.2s ease;
+  padding: 2rem 0;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.transaction-item:hover {
-  background: #f1f5f9;
+.balance-header h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-color);
 }
 
-.transaction-description {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0;
-  color: #1e293b;
+.toggle-charts-btn {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow);
 }
 
-.transaction-date {
-  font-size: 0.875rem;
-  color: #64748b;
-  margin-top: 0.25rem;
+.toggle-charts-btn:hover {
+  background-color: #357abd;
 }
 
-.transaction-amount {
+.balance-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0; /* Prevents flexbox overflow */
+}
+
+.charts-sidebar {
+  width: 450px;
+  flex-shrink: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.charts-sidebar.hidden {
+  width: 0;
+  opacity: 0;
+  margin-left: -2rem; /* To collapse the gap */
+  transform: translateX(-20px);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* =================================
+   Daily Balance Section
+   ================================= */
+.daily-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.daily-card {
+  background: var(--white-color);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.daily-card h3 {
+  margin: 0 0 0.5rem 0;
   font-size: 1rem;
   font-weight: 600;
+  color: var(--dark-gray-color);
 }
 
-.transaction-amount.income {
-  color: #16a34a; /* verde ingresos */
+.daily-card .amount {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
 }
 
-.transaction-amount.expense {
-  color: #dc2626; /* rojo gastos */
+/* =================================
+   Transactions Table
+   ================================= */
+.transactions-section .table-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.transactions-section .table-filters select,
+.transactions-section .table-filters input {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--medium-gray-color);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  background-color: var(--white-color);
+}
+
+.table-container {
+  background-color: var(--white-color);
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.transactions-table th,
+.transactions-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--medium-gray-color);
+}
+
+.transactions-table thead {
+  background-color: #f9fafb;
+}
+
+.transactions-table th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--dark-gray-color);
+  text-transform: uppercase;
+}
+
+.transactions-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.amount.income { color: var(--income-color); }
+.amount.expense { color: var(--expense-color); }
+.amount.profit { color: var(--profit-color); }
+
+.badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.badge.income {
+  background-color: #dcfce7; /* green-100 */
+  color: #166534; /* green-800 */
+}
+
+.badge.expense {
+  background-color: #fee2e2; /* red-100 */
+  color: #991b1b; /* red-800 */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.pagination button {
+  background: var(--white-color);
+  border: 1px solid var(--medium-gray-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #f9fafb;
+}
+
+/* =================================
+   Chart Card
+   ================================= */
+.chart-card {
+  background: var(--white-color);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  height: 100%;
 }

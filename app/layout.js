@@ -24,7 +24,7 @@ function Footer() {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className={`${inter.className} main-body`}>
+      <body className={`${inter.className} main-body`} suppressHydrationWarning={true}>
         <Providers>
           <main className="main-content">{children}</main>
           <Footer />
